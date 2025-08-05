@@ -45,7 +45,7 @@ class MakcuInterface:
 
 # ---- Control Class ----
 class Control:
-    def __init__(self, use_makcu=False, makcu_port='COM3'):
+    def __init__(self):
         self.use_makcu = use_makcu
         self.makcu = None
         if self.use_makcu:
@@ -85,5 +85,6 @@ class Control:
                 win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
             elif button == 'right':
                 win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+
 
 

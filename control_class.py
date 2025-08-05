@@ -2,7 +2,15 @@ import time
 import serial
 import win32api
 import win32con
+import configparser
+import os
 
+# Load config
+config = configparser.ConfigParser()
+config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
+
+use_makcu = config.getboolean('Settings', 'use_makcu', fallback=False)
+makcu_port = config.get('Settings', 'makcu_port', fallback='COM3')
 
 # ---- Makcu Interface ----
 class MakcuInterface:
@@ -77,4 +85,5 @@ class Control:
                 win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
             elif button == 'right':
                 win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+
 
